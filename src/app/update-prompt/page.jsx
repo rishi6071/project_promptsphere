@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 import Form from "@components/Form";
-import { HTTP_METHODS } from "@utils/constant";
+import { HTTP_METHODS } from "@utils/common";
 
 const EditPrompt = ({ params }) => {
   const router = useRouter();

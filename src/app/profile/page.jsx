@@ -5,7 +5,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 import Profile from "@components/Profile";
-import { HTTP_METHODS } from "@utils/constant";
+import { HTTP_METHODS } from "@utils/common";
 
 const MyProfile = () => {
   const router = useRouter();

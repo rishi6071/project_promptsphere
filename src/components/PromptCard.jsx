@@ -12,6 +12,16 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
 
   const [copied, setCopied] = useState("");
 
+  const handleProfileClick = () => {
+    if (session?.user.email === post.creator.email) {
+      router.push("/profile");
+    } else {
+      router.push(
+        `/profile/${post?.creator._id}?name=${post?.creator.username}`
+      );
+    }
+  };
+
   const handleCopy = () => {
     setCopied(post.prompt);
     navigator.clipboard.writeText(post.prompt);
@@ -21,7 +31,10 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
   return (
     <div className="prompt_card">
       <div className="flex justify-between items-start gap-5">
-        <div className="flex-1 flex justify-start items-center gap-3 cursor-pointer">
+        <div
+          className="flex-1 flex justify-start items-center gap-3 cursor-pointer"
+          onClick={handleProfileClick}
+        >
           <Image
             src={post.creator.image}
             alt="user_image"
@@ -61,7 +74,7 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
           return (
             <p
               key={tag}
-              className="blue_gradient transition-all font-inter text-sm cursor-pointer"
+              className="blue_gradient transition-all hover:text-blue-600 font-inter text-sm cursor-pointer"
               onClick={() => handleTagClick && handleTagClick(tag)}
             >
               #{tag}
